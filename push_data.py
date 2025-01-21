@@ -3,9 +3,17 @@ from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from dotenv import load_dotenv
 import os
+import sys
+import json
 load_dotenv()
 
 MONGO_DB_URL = os.getenv("MONGO_DB_URL")
+
+import certifi
+ca=certifi.where()
+
+import pabdas as pd
+import numpy as np
 
 uri = MONGO_DB_URL
 
