@@ -45,6 +45,7 @@ class ModelTrainer:
             raise NetworkSecurityException(e,sys)
 
     def track_mlflow(self,best_model,classificationmetric,best_model_name):
+        mlflow.set_experiment("Network Security")
         mlflow.set_registry_uri(MLFLOW_TRACKING_URI)
         tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
         with mlflow.start_run():
