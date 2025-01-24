@@ -173,6 +173,6 @@ cython_debug/
 Network_Data
 Artifacts
 final_model
-
-
+valid_data
+prediction_output
 
