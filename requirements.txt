@@ -1,9 +1,9 @@
 python-dotenv
 pandas
 numpy
-pymongo
 certifi
 pymongo[srv]
+pymongo
 scikit-learn
 mlflow
 pyaml
@@ -11,7 +11,6 @@ dagshub
 fastapi
 uvicorn
 python-multipart
-mega.py
 pytest
 jsonschema
 
