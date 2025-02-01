@@ -12,5 +12,7 @@ fastapi
 uvicorn
 python-multipart
 mega.py
+pytest
+jsonschema
 
 # -e .

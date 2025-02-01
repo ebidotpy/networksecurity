@@ -9,6 +9,8 @@ from networksecurity.logging.logger import logging
 class NetworkModel:
     def __init__(self,preprocessor,model):
         try:
+            assert preprocessor != None
+            assert model != None
             self.preprocessor = preprocessor
             self.model = model
         except Exception as e:

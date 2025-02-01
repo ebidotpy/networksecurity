@@ -5,7 +5,9 @@ import sys
 
 def get_classification_score(y_true,y_pred)->ClassificationMetricArtifact:
     try:
-            
+        
+        assert len(y_true) > 0
+        assert len(y_pred) > 0
         model_f1_score = f1_score(y_true, y_pred)
         model_recall_score = recall_score(y_true, y_pred)
         model_precision_score=precision_score(y_true,y_pred)
