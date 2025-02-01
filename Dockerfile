@@ -1,18 +1,23 @@
+# Use the official Python 3.12.8-slim image as the base image
 FROM python:3.12.8-slim
+
+# Set the working directory inside the container
 WORKDIR /app
 
-# Change the shell to bash for the virtual environment activation
-SHELL ["/bin/bash", "--", "-c"]  # Important: This is the correct way to change the shell
+# Copy the current directory contents into the container at /app
+COPY . /app
 
-RUN python3 -m venv ./venv
-RUN source ./venv/bin/activate
+# Create a virtual environment
+RUN python3 -m venv /opt/venv
 
-COPY requirements.txt .
-RUN .venv/bin/pip install -r requirements.txt
+# Activate the virtual environment and install packages from requirements.txt
+# Use a single RUN command to reduce the number of layers in the image
+RUN . /opt/venv/bin/activate && \
+    pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+# Set the environment variable to activate the virtual environment
+ENV PATH="/opt/venv/bin:$PATH"
 
-RUN apt-get update && pip install -r requirements.txt
-CMD [".venv/bin/python", "app.py"]
-
-
+# Command to run when the container starts
+CMD ["python", "app.py"]
