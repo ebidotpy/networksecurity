@@ -33,10 +33,13 @@ jobs:
                 key: ${{ runner.os }}-venv-${{ hashFiles('**/requirements*.txt') }}
             - name: Install dependencies
               if: steps.cache-venv.outputs.cache-hit != 'true'
-              run: python -m venv ./venv && . ./venv/bin/activate && pip install -r requirements.txt 
+              run: |
+                python -m venv venv
+                source venv/bin/activate
+                pip install -r requirements.txt
             - name: Test
               run: |
-                ./venv/bin/activate
+                source venv/bin/activate
                 pip install pytest 
                 pytest -v
         
